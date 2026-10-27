@@ -1,0 +1,20 @@
+sequenceDiagram
+  actor U as User
+  participant P as Page (HTML)
+  participant G as guard.js
+  participant A as auth.js
+  participant LS as localStorage
+
+  U->>P: open tasks.html
+  P->>G: run before first paint
+  G->>LS: read session
+  LS-->>G: none or expired
+  G-->>U: redirect to login.html?next=tasks.html
+  U->>A: submit email + password
+  A->>LS: read lockout counter
+  A->>A: PBKDF2-SHA256 (150k iterations, per-user salt)
+  A->>LS: compare hash, then write 8h session
+  A-->>U: redirect to tasks.html (validated same-site path)
+  U->>P: create / edit / delete a task
+  P->>LS: save tasks:userId
+  LS-->>P: data persists across reloads

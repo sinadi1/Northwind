@@ -1,0 +1,54 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+    <h1>Dashboard</h1>
+    <p id="welcome"></p>
+
+    <section id="metrics" aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading" class="visually-hidden">Key metrics</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Total tasks</h3>
+          <p class="metric" id="kpi-total">0</p>
+          <p class="delta" id="kpi-total-note"></p>
+        </article>
+        <article class="card">
+          <h3>In progress</h3>
+          <p class="metric" id="kpi-progress">0</p>
+          <p class="delta negative">Overdue: <span id="kpi-overdue">0</span></p>
+        </article>
+        <article class="card">
+          <h3>Completed</h3>
+          <p class="metric" id="kpi-done">0</p>
+          <p class="delta" id="kpi-done-note"></p>
+        </article>
+        <article class="card">
+          <h3>Items in cart</h3>
+          <p class="metric" id="kpi-cart">0</p>
+          <p class="delta" id="kpi-cart-note"></p>
+        </article>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section id="upcoming" aria-labelledby="upcoming-heading">
+        <h2 id="upcoming-heading">Upcoming tasks</h2>
+        <div class="panel">
+          <ul class="activity-list" id="upcoming-list"></ul>
+        </div>
+        <p><a href="tasks.html">Manage all tasks</a></p>
+      </section>
+
+      <aside class="panel" aria-labelledby="tips-heading">
+        <h2 id="tips-heading">Quick tips</h2>
+        <ul>
+          <li>Press <kbd>Tab</kbd> to move between controls.</li>
+          <li>Use the skip link to jump past the navigation.</li>
+          <li>Dialogs close with <kbd>Esc</kbd>.</li>
+          <li>Your tasks and cart are saved in this browser.</li>
+        </ul>
+      </aside>
+    </div>

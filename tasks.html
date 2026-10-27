@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Northwind Tasks: a task manager and storefront capstone built with semantic HTML, responsive CSS and vanilla JavaScript.">
+  <title>Tasks - Northwind Tasks</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/guard.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">Northwind Tasks</a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="tasks.html" aria-current="page">Tasks</a></li>
+        <li><a href="products.html">Store</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <p class="user-name">Signed in as <strong id="user-name"></strong></p>
+      <button type="button" class="btn btn-small theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme: off</button>
+      <button type="button" class="btn btn-small theme-toggle" id="logout-button">Log out</button>
+    </div>
+  </header>
+  <aside class="sidebar" aria-label="Sidebar">
+    <nav aria-labelledby="sidebar-heading">
+      <h2 id="sidebar-heading">On this page</h2>
+      <ul>
+        <li><a href="#filters">Search and filters</a></li>
+        <li><a href="#task-list-section">Your tasks</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main id="main-content" class="main-content" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Tasks</li>
+      </ol>
+    </nav>
+    <h1>Tasks</h1>
+
+    <section id="filters" aria-labelledby="filters-heading">
+      <h2 id="filters-heading" class="visually-hidden">Search, filter and sort</h2>
+      <div class="toolbar">
+        <div class="field">
+          <label for="task-search">Search tasks</label>
+          <input type="search" id="task-search" autocomplete="off" maxlength="100">
+        </div>
+        <div class="field">
+          <label for="task-sort">Sort by</label>
+          <select id="task-sort"></select>
+        </div>
+        <button type="button" class="btn" id="new-task-button">New task</button>
+      </div>
+      <div role="group" aria-labelledby="status-label">
+        <p id="status-label" class="label">Show</p>
+        <div id="status-tabs" class="tabs"></div>
+      </div>
+    </section>
+
+    <section id="task-list-section" aria-labelledby="task-list-heading">
+      <h2 id="task-list-heading" tabindex="-1">Your tasks</h2>
+      <p id="task-count" role="status"></p>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <dialog id="task-dialog" aria-labelledby="task-dialog-title">
+      <div class="dialog-header">
+        <h2 id="task-dialog-title">New task</h2>
+        <button type="button" class="btn btn-secondary btn-small" data-close-dialog aria-label="Close dialog"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form id="task-form" data-validate data-silent novalidate>
+        <div class="dialog-body">
+          <p>Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+          <div class="field">
+            <label for="task-title">Title <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="task-title" name="title" maxlength="120" required autocomplete="off" aria-describedby="task-title-error" data-label="Title">
+            <span class="error-message" id="task-title-error"></span>
+          </div>
+          <div class="field">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" name="description" rows="3" maxlength="500" aria-describedby="task-description-count" data-count-target="task-description-count"></textarea>
+            <span class="hint" id="task-description-count"></span>
+          </div>
+          <div class="field">
+            <label for="task-status">Status</label>
+            <select id="task-status" name="status">
+              <option value="todo">To do</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>Priority</legend>
+            <div class="choice"><input type="radio" id="priority-low" name="priority" value="low"><label for="priority-low">Low</label></div>
+            <div class="choice"><input type="radio" id="priority-medium" name="priority" value="medium" checked><label for="priority-medium">Medium</label></div>
+            <div class="choice"><input type="radio" id="priority-high" name="priority" value="high"><label for="priority-high">High</label></div>
+          </fieldset>
+          <div class="field">
+            <label for="task-due">Due date</label>
+            <input type="date" id="task-due" name="due">
+          </div>
+          <p role="status" data-form-status></p>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-secondary" data-close-dialog>Cancel</button>
+          <button type="submit" class="btn" id="task-submit">Add task</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="delete-dialog" role="alertdialog" aria-labelledby="delete-title" aria-describedby="delete-desc">
+      <div class="dialog-header">
+        <h2 id="delete-title">Delete this task?</h2>
+      </div>
+      <div class="dialog-body">
+        <p id="delete-desc">The task will be removed permanently. This cannot be undone.</p>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="btn btn-secondary" data-close-dialog autofocus>Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirm-delete">Delete task</button>
+      </div>
+    </dialog>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 Northwind Tasks. Capstone demo: sign-in is simulated in your browser.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="tasks.html">Tasks</a></li>
+        <li><a href="products.html">Store</a></li>
+        <li><a href="accessibility.html">Accessibility statement</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <script src="js/components/modal.js" defer></script>
+  <script src="js/components/form-validation.js" defer></script>
+  <script src="js/components/char-count.js" defer></script>
+  <script src="js/components/session-ui.js" defer></script>
+  <script src="js/components/theme-toggle.js" defer></script>
+  <script type="module" src="js/tasks.js"></script>
+</body>
+</html>

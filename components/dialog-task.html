@@ -1,0 +1,44 @@
+<dialog id="task-dialog" aria-labelledby="task-dialog-title">
+  <div class="dialog-header">
+    <h2 id="task-dialog-title">New task</h2>
+    <button type="button" class="btn btn-secondary btn-small" data-close-dialog aria-label="Close dialog"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <form id="task-form" data-validate data-silent novalidate>
+    <div class="dialog-body">
+      <p>Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      <div class="field">
+        <label for="task-title">Title <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="text" id="task-title" name="title" maxlength="120" required autocomplete="off" aria-describedby="task-title-error" data-label="Title">
+        <span class="error-message" id="task-title-error"></span>
+      </div>
+      <div class="field">
+        <label for="task-description">Description</label>
+        <textarea id="task-description" name="description" rows="3" maxlength="500" aria-describedby="task-description-count" data-count-target="task-description-count"></textarea>
+        <span class="hint" id="task-description-count"></span>
+      </div>
+      <div class="field">
+        <label for="task-status">Status</label>
+        <select id="task-status" name="status">
+          <option value="todo">To do</option>
+          <option value="in-progress">In progress</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+      <fieldset>
+        <legend>Priority</legend>
+        <div class="choice"><input type="radio" id="priority-low" name="priority" value="low"><label for="priority-low">Low</label></div>
+        <div class="choice"><input type="radio" id="priority-medium" name="priority" value="medium" checked><label for="priority-medium">Medium</label></div>
+        <div class="choice"><input type="radio" id="priority-high" name="priority" value="high"><label for="priority-high">High</label></div>
+      </fieldset>
+      <div class="field">
+        <label for="task-due">Due date</label>
+        <input type="date" id="task-due" name="due">
+      </div>
+      <p role="status" data-form-status></p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-close-dialog>Cancel</button>
+      <button type="submit" class="btn" id="task-submit">Add task</button>
+    </div>
+  </form>
+</dialog>

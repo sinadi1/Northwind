@@ -1,0 +1,26 @@
+    <h1>Sign in</h1>
+    <p>Welcome back to Northwind Tasks.</p>
+    <div id="auth-banner" role="alert"></div>
+
+    <form id="login-form" data-validate data-silent novalidate>
+      <div class="field">
+        <label for="login-email">Email address</label>
+        <input type="email" id="login-email" name="email" autocomplete="username" required aria-describedby="login-email-error" data-label="Email address">
+        <span class="error-message" id="login-email-error"></span>
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="password" autocomplete="current-password" required aria-describedby="login-password-error" data-label="Password">
+        <span class="error-message" id="login-password-error"></span>
+      </div>
+      <button type="submit" class="btn">Sign in</button>
+      <p role="status" data-form-status></p>
+    </form>
+
+    <p>New here? <a href="register.html">Create an account</a>.</p>
+
+    <aside class="demo-box" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo account</h2>
+      <p>Email: <strong>demo@northwind.test</strong><br>Password: <strong>Demo-Pass-2026</strong></p>
+      <button type="button" class="btn btn-secondary btn-small" id="fill-demo">Fill in demo details</button>
+    </aside>

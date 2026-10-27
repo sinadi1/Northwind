@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Northwind Tasks: a task manager and storefront capstone built with semantic HTML, responsive CSS and vanilla JavaScript.">
+  <title>Dashboard - Northwind Tasks</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/guard.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">Northwind Tasks</a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html" aria-current="page">Dashboard</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+        <li><a href="products.html">Store</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <p class="user-name">Signed in as <strong id="user-name"></strong></p>
+      <button type="button" class="btn btn-small theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme: off</button>
+      <button type="button" class="btn btn-small theme-toggle" id="logout-button">Log out</button>
+    </div>
+  </header>
+  <aside class="sidebar" aria-label="Sidebar">
+    <nav aria-labelledby="sidebar-heading">
+      <h2 id="sidebar-heading">On this page</h2>
+      <ul>
+        <li><a href="#metrics">Key metrics</a></li>
+        <li><a href="#upcoming">Upcoming tasks</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main id="main-content" class="main-content" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+    <h1>Dashboard</h1>
+    <p id="welcome"></p>
+
+    <section id="metrics" aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading" class="visually-hidden">Key metrics</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Total tasks</h3>
+          <p class="metric" id="kpi-total">0</p>
+          <p class="delta" id="kpi-total-note"></p>
+        </article>
+        <article class="card">
+          <h3>In progress</h3>
+          <p class="metric" id="kpi-progress">0</p>
+          <p class="delta negative">Overdue: <span id="kpi-overdue">0</span></p>
+        </article>
+        <article class="card">
+          <h3>Completed</h3>
+          <p class="metric" id="kpi-done">0</p>
+          <p class="delta" id="kpi-done-note"></p>
+        </article>
+        <article class="card">
+          <h3>Items in cart</h3>
+          <p class="metric" id="kpi-cart">0</p>
+          <p class="delta" id="kpi-cart-note"></p>
+        </article>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section id="upcoming" aria-labelledby="upcoming-heading">
+        <h2 id="upcoming-heading">Upcoming tasks</h2>
+        <div class="panel">
+          <ul class="activity-list" id="upcoming-list"></ul>
+        </div>
+        <p><a href="tasks.html">Manage all tasks</a></p>
+      </section>
+
+      <aside class="panel" aria-labelledby="tips-heading">
+        <h2 id="tips-heading">Quick tips</h2>
+        <ul>
+          <li>Press <kbd>Tab</kbd> to move between controls.</li>
+          <li>Use the skip link to jump past the navigation.</li>
+          <li>Dialogs close with <kbd>Esc</kbd>.</li>
+          <li>Your tasks and cart are saved in this browser.</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 Northwind Tasks. Capstone demo: sign-in is simulated in your browser.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="tasks.html">Tasks</a></li>
+        <li><a href="products.html">Store</a></li>
+        <li><a href="accessibility.html">Accessibility statement</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <script src="js/components/session-ui.js" defer></script>
+  <script src="js/components/theme-toggle.js" defer></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "northwind-capstone",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Northwind: task manager + storefront capstone (vanilla HTML5, CSS, ES modules, localStorage)",
+  "type": "commonjs",
+  "scripts": {
+    "build": "python3 build.py",
+    "dist": "node scripts/dist.mjs",
+    "start": "python3 -m http.server 8080",
+    "validate": "vnu-jar --also-check-css *.html css/*.css",
+    "test": "node tests/e2e.test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0",
+    "vnu-jar": "^26.10.12"
+  }
+}

@@ -1,0 +1,19 @@
+# Netlify: connect the GitHub repo, or run "npm run dist" and drag the dist/ folder
+# onto https://app.netlify.com/drop
+[build]
+  command = "node scripts/dist.mjs"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://fakestoreapi.com; connect-src 'self' https://fakestoreapi.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"

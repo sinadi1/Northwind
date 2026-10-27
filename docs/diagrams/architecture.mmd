@@ -1,0 +1,37 @@
+flowchart TB
+  subgraph Host["Static host (Netlify / Vercel / GitHub Pages)"]
+    Files["HTML, CSS, ES modules<br/>+ security headers (CSP)"]
+  end
+
+  subgraph Browser["Browser"]
+    direction TB
+    Guard["guard.js<br/>route guard in head"]
+    Pages["Pages<br/>login, register, dashboard,<br/>tasks, store"]
+
+    subgraph Modules["ES modules"]
+      direction LR
+      Auth["auth.js<br/>PBKDF2 hashing,<br/>lockout"]
+      Session["session.js<br/>8h session"]
+      TaskStore["task-store.js<br/>CRUD, filters"]
+      Api["api.js<br/>fetch, timeout,<br/>cache"]
+      State["state.js<br/>persistent stores"]
+      UI["ui.js<br/>safe DOM rendering"]
+    end
+
+    LS[("localStorage<br/>users, session, tasks per user,<br/>cart per user, prefs, API cache")]
+  end
+
+  FakeStore["FakeStoreAPI<br/>public REST API"]
+
+  Files -->|"serves"| Pages
+  Pages --> Guard
+  Guard -->|"no valid session"| Pages
+  Pages --> Modules
+  Auth --> Session
+  Auth --> State
+  TaskStore --> State
+  Api --> State
+  State <--> LS
+  Session <--> LS
+  Api -->|"GET /products"| FakeStore
+  Pages --> UI

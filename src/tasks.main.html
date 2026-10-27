@@ -1,0 +1,34 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Tasks</li>
+      </ol>
+    </nav>
+    <h1>Tasks</h1>
+
+    <section id="filters" aria-labelledby="filters-heading">
+      <h2 id="filters-heading" class="visually-hidden">Search, filter and sort</h2>
+      <div class="toolbar">
+        <div class="field">
+          <label for="task-search">Search tasks</label>
+          <input type="search" id="task-search" autocomplete="off" maxlength="100">
+        </div>
+        <div class="field">
+          <label for="task-sort">Sort by</label>
+          <select id="task-sort"></select>
+        </div>
+        <button type="button" class="btn" id="new-task-button">New task</button>
+      </div>
+      <div role="group" aria-labelledby="status-label">
+        <p id="status-label" class="label">Show</p>
+        <div id="status-tabs" class="tabs"></div>
+      </div>
+    </section>
+
+    <section id="task-list-section" aria-labelledby="task-list-heading">
+      <h2 id="task-list-heading" tabindex="-1">Your tasks</h2>
+      <p id="task-count" role="status"></p>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <!--DIALOGS-->

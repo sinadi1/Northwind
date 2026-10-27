@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Store</li>
+      </ol>
+    </nav>
+    <h1>Store</h1>
+
+    <div id="error-banner" role="alert"></div>
+
+    <section id="filters" aria-labelledby="filters-heading">
+      <h2 id="filters-heading" class="visually-hidden">Search, filter and sort</h2>
+      <div class="toolbar">
+        <div class="field">
+          <label for="product-search">Search products</label>
+          <input type="search" id="product-search" autocomplete="off" maxlength="100">
+        </div>
+        <div class="field">
+          <label for="product-sort">Sort by</label>
+          <select id="product-sort"></select>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="category-label">
+        <p id="category-label" class="label">Category</p>
+        <div id="category-tabs" class="tabs"></div>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section id="products" aria-labelledby="products-heading">
+        <h2 id="products-heading">Products</h2>
+        <p id="result-count" role="status"></p>
+        <ul id="product-grid" class="product-grid" aria-busy="true"></ul>
+      </section>
+
+      <aside id="cart" class="panel cart-panel" aria-labelledby="cart-heading">
+        <h2 id="cart-heading" tabindex="-1">Your cart</h2>
+        <div id="cart-body"></div>
+      </aside>
+    </div>
+
+    <noscript><p>This page needs JavaScript to load products.</p></noscript>
